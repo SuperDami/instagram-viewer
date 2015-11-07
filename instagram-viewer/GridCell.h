@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  GridCell.h
 //  instagram-viewer
 //
 //  Created by chen zhejun on 11/7/15.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface GridCell : UICollectionViewCell
 
+- (void)setImageUrl:(NSURL *)imageURL;
 
 @end
-
