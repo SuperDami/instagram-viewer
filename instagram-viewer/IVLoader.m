@@ -75,7 +75,8 @@
 
 - (void)loadMoreType:(NSInteger)type count:(NSUInteger)count {
     self.isLoading = YES;
-    
+    NSLog(@"loadMore");
+
     NSString *notificationEvent;
     if (type == 1) {
         notificationEvent = IVLoaderMediaDataUpdated;

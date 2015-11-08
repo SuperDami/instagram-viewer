@@ -8,5 +8,6 @@ pod 'AFNetworking'
 pod 'InstagramKit'
 pod 'InstagramKit/UICKeyChainStore'
 pod 'Masonry'
+
 end
 

@@ -13,20 +13,22 @@
 #import "DetailViewController.h"
 #import "UserViewController.h"
 #import "IVLoader.h"
+#import "RNPullToActionControl.h"
 
 #define kNumberOfCellsInARow 3
 #define kFetchItemsCount 30
 @interface MainViewerController ()
 @property (nonatomic, weak) InstagramEngine *instagramEngine;
 @property (nonatomic, weak) IVLoader *loader;
+@property (nonatomic, strong) RNPullToActionControl *refreshControler;
 @end
 
 @implementation MainViewerController
 
 - (instancetype)init {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    [layout setMinimumInteritemSpacing:0.0f];
-    [layout setMinimumLineSpacing:0.0f];
+    [layout setMinimumInteritemSpacing:1.0f];
+    [layout setMinimumLineSpacing:1.0f];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     if (self = [super initWithCollectionViewLayout:layout]) {
         
@@ -37,7 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+//    self.collectionView.backgroundColor = [UIColor darkGrayColor];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
@@ -58,6 +60,7 @@
     [self.collectionView registerClass:[GridCell class] forCellWithReuseIdentifier:@"CPCELL"];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"User" style:UIBarButtonItemStyleDone target:self action:@selector(userTapped:)];
     
+    [self createRefreshControl];
     [self loadMedia];
 }
 
@@ -68,6 +71,30 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)createRefreshControl {
+    UILabel *pullLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, 80.0)];
+    pullLabel.backgroundColor = [UIColor clearColor];
+    pullLabel.textColor = [UIColor lightGrayColor];
+    pullLabel.textAlignment = NSTextAlignmentCenter;
+    
+    _refreshControler = [[RNPullToActionControl alloc] initWithView:pullLabel];
+    __weak typeof(self) weakSelf = self;
+    __weak typeof(pullLabel) weakLabel = pullLabel;
+    [self.collectionView addSubview:_refreshControler];
+    _refreshControler.startPullActionBlock = ^{
+        weakLabel.text = @"Pull to refresh";
+    };
+    _refreshControler.willStartLoadingBlock = ^{
+        weakLabel.text = @"Loading...";
+    };
+    _refreshControler.startLoadingBlock = ^{
+        [weakSelf loadMedia];
+    };
+    _refreshControler.pullToActionBlock = ^(UIView *activeView, CGPoint offset) {
+        
+    };
 }
 
 - (void)loadMedia {
@@ -94,6 +121,10 @@
         [self.collectionView insertItemsAtIndexPaths:ipArray];
     } else {
         [self.collectionView reloadData];
+    }
+    
+    if (_refreshControler.refreshing) {
+        [_refreshControler endRefreshing];
     }
 }
 
@@ -134,7 +165,8 @@
 #pragma mark - UIScrollViewDelegate Methods -
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (self.collectionView.contentOffset.y > self.collectionView.contentSize.height - 2 * self.collectionView.bounds.size.height) {
+    if (scrollView.contentOffset.y > -scrollView.contentInset.top &&
+        scrollView.contentOffset.y > scrollView.contentSize.height - 2 * scrollView.bounds.size.height) {
         [self.loader loadMoreIfPossibleCount:kFetchItemsCount];
     }
 }

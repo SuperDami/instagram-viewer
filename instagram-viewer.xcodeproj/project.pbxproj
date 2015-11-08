@@ -11,7 +11,6 @@
 		D1F0A3381BEDBCC9002AE893 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F0A3371BEDBCC9002AE893 /* main.m */; };
 		D1F0A33B1BEDBCC9002AE893 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F0A33A1BEDBCC9002AE893 /* AppDelegate.m */; };
 		D1F0A33E1BEDBCC9002AE893 /* MainViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F0A33D1BEDBCC9002AE893 /* MainViewerController.m */; };
-		D1F0A3431BEDBCC9002AE893 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1F0A3421BEDBCC9002AE893 /* Assets.xcassets */; };
 		D1F0A3461BEDBCC9002AE893 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1F0A3441BEDBCC9002AE893 /* LaunchScreen.storyboard */; };
 		D1F0A3521BEDC491002AE893 /* GridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F0A3511BEDC491002AE893 /* GridCell.m */; };
 		D1F0A3571BEDC4A5002AE893 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F0A3541BEDC4A5002AE893 /* LoginViewController.m */; };
@@ -20,6 +19,8 @@
 		D1F0A3641BEE2AC7002AE893 /* IVLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F0A3631BEE2AC7002AE893 /* IVLoader.m */; };
 		D1F0A36E1BEEF0E0002AE893 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F0A36D1BEEF0E0002AE893 /* UserViewController.m */; };
 		D1F0A3711BEF002A002AE893 /* UserView.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F0A3701BEF002A002AE893 /* UserView.m */; };
+		D1F0A3741BEF39CF002AE893 /* RNPullToActionControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F0A3731BEF39CF002AE893 /* RNPullToActionControl.m */; };
+		D1F0A3761BEF7DCA002AE893 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1F0A3751BEF7DCA002AE893 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +33,6 @@
 		D1F0A33A1BEDBCC9002AE893 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D1F0A33C1BEDBCC9002AE893 /* MainViewerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewerController.h; sourceTree = "<group>"; };
 		D1F0A33D1BEDBCC9002AE893 /* MainViewerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewerController.m; sourceTree = "<group>"; };
-		D1F0A3421BEDBCC9002AE893 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1F0A3451BEDBCC9002AE893 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1F0A3471BEDBCC9002AE893 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1F0A3501BEDC491002AE893 /* GridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridCell.h; sourceTree = "<group>"; };
@@ -50,6 +50,9 @@
 		D1F0A36D1BEEF0E0002AE893 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 		D1F0A36F1BEF002A002AE893 /* UserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserView.h; sourceTree = "<group>"; };
 		D1F0A3701BEF002A002AE893 /* UserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserView.m; sourceTree = "<group>"; };
+		D1F0A3721BEF39CF002AE893 /* RNPullToActionControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNPullToActionControl.h; sourceTree = "<group>"; };
+		D1F0A3731BEF39CF002AE893 /* RNPullToActionControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNPullToActionControl.m; sourceTree = "<group>"; };
+		D1F0A3751BEF7DCA002AE893 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,12 +105,12 @@
 		D1F0A3351BEDBCC9002AE893 /* instagram-viewer */ = {
 			isa = PBXGroup;
 			children = (
+				D1F0A3751BEF7DCA002AE893 /* Assets.xcassets */,
 				D1F0A36A1BEE6DA9002AE893 /* Utils */,
 				D1F0A3691BEE6D8C002AE893 /* Views */,
 				D1F0A3681BEE6D73002AE893 /* Controllers */,
 				D1F0A3391BEDBCC9002AE893 /* AppDelegate.h */,
 				D1F0A33A1BEDBCC9002AE893 /* AppDelegate.m */,
-				D1F0A3421BEDBCC9002AE893 /* Assets.xcassets */,
 				D1F0A3441BEDBCC9002AE893 /* LaunchScreen.storyboard */,
 				D1F0A3471BEDBCC9002AE893 /* Info.plist */,
 				D1F0A3361BEDBCC9002AE893 /* Supporting Files */,
@@ -142,6 +145,8 @@
 		D1F0A3691BEE6D8C002AE893 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D1F0A3721BEF39CF002AE893 /* RNPullToActionControl.h */,
+				D1F0A3731BEF39CF002AE893 /* RNPullToActionControl.m */,
 				D1F0A3501BEDC491002AE893 /* GridCell.h */,
 				D1F0A3511BEDC491002AE893 /* GridCell.m */,
 				D1F0A35F1BEE0EEE002AE893 /* DetailCell.h */,
@@ -221,8 +226,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1F0A3761BEF7DCA002AE893 /* Assets.xcassets in Resources */,
 				D1F0A3461BEDBCC9002AE893 /* LaunchScreen.storyboard in Resources */,
-				D1F0A3431BEDBCC9002AE893 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +290,7 @@
 				D1F0A33E1BEDBCC9002AE893 /* MainViewerController.m in Sources */,
 				D1F0A3571BEDC4A5002AE893 /* LoginViewController.m in Sources */,
 				D1F0A3711BEF002A002AE893 /* UserView.m in Sources */,
+				D1F0A3741BEF39CF002AE893 /* RNPullToActionControl.m in Sources */,
 				D1F0A3611BEE0EEE002AE893 /* DetailCell.m in Sources */,
 				D1F0A3641BEE2AC7002AE893 /* IVLoader.m in Sources */,
 				D1F0A33B1BEDBCC9002AE893 /* AppDelegate.m in Sources */,

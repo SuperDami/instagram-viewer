@@ -10,11 +10,13 @@
 #import "DetailCell.h"
 #import "InstagramKit.h"
 #import "IVLoader.h"
+#import "RNPullToActionControl.h"
 
 #define kFetchItemsCount 10
 @interface DetailViewController() <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, weak)InstagramEngine *instagramEngine;
 @property (nonatomic, weak)IVLoader *loader;
+@property (nonatomic, strong) RNPullToActionControl *refreshControler;
 @end
 
 @implementation DetailViewController
@@ -27,7 +29,8 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.instagramEngine = [InstagramEngine sharedEngine];
     self.loader = [IVLoader shareInstance];
-    
+    [self createRefreshControl];
+
     [self.tableView registerClass:[DetailCell class] forCellReuseIdentifier:NSStringFromClass([DetailCell class])];
     [self.tableView reloadData];
     if (_itemIndex < [_loader.mediaArray count]) {
@@ -49,6 +52,31 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)createRefreshControl {
+    UILabel *pullLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, 80.0)];
+    pullLabel.backgroundColor = [UIColor clearColor];
+    pullLabel.textColor = [UIColor grayColor];
+    pullLabel.textAlignment = NSTextAlignmentCenter;
+    
+    _refreshControler = [[RNPullToActionControl alloc] initWithView:pullLabel];
+    __weak typeof(self) weakSelf = self;
+    __weak typeof(pullLabel) weakLabel = pullLabel;
+    [self.tableView addSubview:_refreshControler];
+    _refreshControler.startPullActionBlock = ^{
+        weakLabel.text = @"Pull to refresh";
+    };
+    _refreshControler.willStartLoadingBlock = ^{
+        weakLabel.text = @"Loading...";
+    };
+    _refreshControler.startLoadingBlock = ^{
+        [weakSelf.loader reloadMediaData];
+        [weakSelf.tableView reloadData];
+    };
+    _refreshControler.pullToActionBlock = ^(UIView *activeView, CGPoint offset) {
+        
+    };
+}
+
 - (void)mediaDataUpdated:(NSNotification *)noti {
     NSUInteger offset = [self.tableView numberOfRowsInSection:0];
     NSInteger count = [self.loader.mediaArray count] - offset;
@@ -61,6 +89,10 @@
         [self.tableView insertRowsAtIndexPaths:ipArray withRowAnimation:UITableViewRowAnimationFade];
     } else {
         [self.tableView reloadData];
+    }
+    
+    if (_refreshControler.refreshing) {
+        [_refreshControler endRefreshing];
     }
 }
 
@@ -93,7 +125,8 @@
         }
     }
     
-    if (self.tableView.contentOffset.y > self.tableView.contentSize.height - 2 * self.tableView.bounds.size.height) {
+    if (scrollView.contentOffset.y > -scrollView.contentInset.top &&
+        scrollView.contentOffset.y > scrollView.contentSize.height - 2 * scrollView.bounds.size.height) {
         [self.loader loadMoreIfPossibleCount:kFetchItemsCount];
     }
 }
