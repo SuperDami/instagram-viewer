@@ -9,11 +9,10 @@
 #import "DetailCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "InstagramKit.h"
-#import "CommentLabel.h"
 
 @interface DetailCell()
 @property (nonatomic)UIImageView *contentImageView;
-@property (nonatomic)CommentLabel *label;
+@property (nonatomic)UILabel *label;
 @end
 
 @implementation DetailCell {
@@ -28,8 +27,9 @@
         [self.contentView addSubview:_contentImageView];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        _label = [[CommentLabel alloc] init];
+        _label = [[UILabel alloc] init];
         _label.numberOfLines = 0;
+        _label.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_label];
     }
     return self;
@@ -53,7 +53,7 @@
 
 - (void)setMedia:(InstagramMedia *)media {
     _media = media;
-    _label.comment = media.caption;
+    _label.attributedText = [[self class] commentAttrStringWithName:media.caption.user.username text:media.caption.text];
     
     __weak typeof(self) weakMe = self;
     [self.contentImageView setImageWithURLRequest:[NSURLRequest requestWithURL:media.standardResolutionImageURL] placeholderImage:nil success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
@@ -64,11 +64,23 @@
     } failure:nil];
 }
 
++ (NSMutableAttributedString *)commentAttrStringWithName:(NSString *)username text:(NSString *)text {
+    NSString *oriStr = [[username stringByAppendingString:@" "] stringByAppendingString:text];
+    if (oriStr) {
+        NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:oriStr];
+        [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:67.0 / 255.0 green:115.0 / 255.0 blue:161.0 / 255.0 alpha:1.0] range:NSMakeRange(0, [username length])];
+        [str addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0] range:NSMakeRange(0, [username length])];
+        [str addAttribute:NSForegroundColorAttributeName value:[UIColor grayColor]range:NSMakeRange([username length] + 1, [text length])];
+        return str;
+    }
+    return nil;
+}
+
 + (CGFloat)cellHeightWithScreenWidth:(CGFloat)width media:(InstagramMedia *)media {
     NSString *username = media.caption.user.username;
     NSString *text = media.caption.text;
     
-    NSMutableAttributedString *str = [CommentLabel commentAttrStringWithName:username text:text];
+    NSMutableAttributedString *str = [[self class] commentAttrStringWithName:username text:text];
     return [[self class] imgHeightWith:width media:media] + [[self class] heightWithArrtString:str width:width - 20.0] + 10.0;
 }
 

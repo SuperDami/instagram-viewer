@@ -28,16 +28,19 @@ PODS:
   - InstagramKit/UICKeyChainStore (3.6.9):
     - AFNetworking (~> 2.0)
     - UICKeyChainStore (~> 2.0)
+  - Masonry (0.6.3)
   - UICKeyChainStore (2.1.0)
 
 DEPENDENCIES:
   - AFNetworking
   - InstagramKit
   - InstagramKit/UICKeyChainStore
+  - Masonry
 
 SPEC CHECKSUMS:
   AFNetworking: 7f317038a9710cabfa43ec56396b307b45df72ab
   InstagramKit: 1f937c5c4b8469fd00a31e235d5e7d3e256ffe5d
+  Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
 COCOAPODS: 0.39.0

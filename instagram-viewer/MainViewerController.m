@@ -11,7 +11,7 @@
 #import "GridCell.h"
 #import "InstagramMedia.h"
 #import "DetailViewController.h"
-#import "LoginViewController.h"
+#import "UserViewController.h"
 #import "IVLoader.h"
 
 #define kNumberOfCellsInARow 3
@@ -56,7 +56,7 @@
                                                object:nil];
     
     [self.collectionView registerClass:[GridCell class] forCellWithReuseIdentifier:@"CPCELL"];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleDone target:self action:@selector(loginTapped:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"User" style:UIBarButtonItemStyleDone target:self action:@selector(userTapped:)];
     
     [self loadMedia];
 }
@@ -73,28 +73,13 @@
 - (void)loadMedia {
     BOOL isSessionValid = [self.instagramEngine isSessionValid];
     [self setTitle: (isSessionValid) ? @"My Feed" : @"Popular Media"];
-    [self.navigationItem.leftBarButtonItem setTitle: (isSessionValid) ? @"Log out" : @"Log in"];
     [self.loader reloadMediaData];
     [self.collectionView reloadData];
 }
 
-/**
- Invoked when user taps the left navigation item.
- @discussion Either directs to the Login ViewController or logs out.
- */
-- (void)loginTapped:(id)sender {
-    if (![self.instagramEngine isSessionValid]) {
-        LoginViewController *loginNavigationViewController = [[LoginViewController alloc] init];
-        UINavigationController *navVc = [[UINavigationController alloc] initWithRootViewController:loginNavigationViewController];
-        [self presentViewController:navVc animated:YES completion:nil];
-    }
-    else
-    {
-        [self.instagramEngine logout];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"InstagramKit" message:@"You are now logged out." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
-        [alert show];
-    }
+- (void)userTapped:(id)sender {
+    UserViewController *userVC = [[UserViewController alloc] init];
+    [self.navigationController pushViewController:userVC animated:YES];
 }
 
 - (void)mediaDataUpdated:(NSNotification *)notification {

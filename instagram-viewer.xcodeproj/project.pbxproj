@@ -18,7 +18,8 @@
 		D1F0A35E1BEE0BF2002AE893 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F0A35D1BEE0BF2002AE893 /* DetailViewController.m */; };
 		D1F0A3611BEE0EEE002AE893 /* DetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F0A3601BEE0EEE002AE893 /* DetailCell.m */; };
 		D1F0A3641BEE2AC7002AE893 /* IVLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F0A3631BEE2AC7002AE893 /* IVLoader.m */; };
-		D1F0A3671BEE51D2002AE893 /* CommentLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F0A3661BEE51D2002AE893 /* CommentLabel.m */; };
+		D1F0A36E1BEEF0E0002AE893 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F0A36D1BEEF0E0002AE893 /* UserViewController.m */; };
+		D1F0A3711BEF002A002AE893 /* UserView.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F0A3701BEF002A002AE893 /* UserView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +45,11 @@
 		D1F0A3601BEE0EEE002AE893 /* DetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCell.m; sourceTree = "<group>"; };
 		D1F0A3621BEE2AC7002AE893 /* IVLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IVLoader.h; sourceTree = "<group>"; };
 		D1F0A3631BEE2AC7002AE893 /* IVLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IVLoader.m; sourceTree = "<group>"; };
-		D1F0A3651BEE51D2002AE893 /* CommentLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentLabel.h; sourceTree = "<group>"; };
-		D1F0A3661BEE51D2002AE893 /* CommentLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentLabel.m; sourceTree = "<group>"; };
+		D1F0A36B1BEEE260002AE893 /* InstagramView-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "InstagramView-Prefix.pch"; sourceTree = "<group>"; };
+		D1F0A36C1BEEF0E0002AE893 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
+		D1F0A36D1BEEF0E0002AE893 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
+		D1F0A36F1BEF002A002AE893 /* UserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserView.h; sourceTree = "<group>"; };
+		D1F0A3701BEF002A002AE893 /* UserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				D1F0A3371BEDBCC9002AE893 /* main.m */,
+				D1F0A36B1BEEE260002AE893 /* InstagramView-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -128,6 +133,8 @@
 				D1F0A33D1BEDBCC9002AE893 /* MainViewerController.m */,
 				D1F0A35C1BEE0BF2002AE893 /* DetailViewController.h */,
 				D1F0A35D1BEE0BF2002AE893 /* DetailViewController.m */,
+				D1F0A36C1BEEF0E0002AE893 /* UserViewController.h */,
+				D1F0A36D1BEEF0E0002AE893 /* UserViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -139,8 +146,8 @@
 				D1F0A3511BEDC491002AE893 /* GridCell.m */,
 				D1F0A35F1BEE0EEE002AE893 /* DetailCell.h */,
 				D1F0A3601BEE0EEE002AE893 /* DetailCell.m */,
-				D1F0A3651BEE51D2002AE893 /* CommentLabel.h */,
-				D1F0A3661BEE51D2002AE893 /* CommentLabel.m */,
+				D1F0A36F1BEF002A002AE893 /* UserView.h */,
+				D1F0A3701BEF002A002AE893 /* UserView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -274,10 +281,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1F0A36E1BEEF0E0002AE893 /* UserViewController.m in Sources */,
 				D1F0A33E1BEDBCC9002AE893 /* MainViewerController.m in Sources */,
 				D1F0A3571BEDC4A5002AE893 /* LoginViewController.m in Sources */,
+				D1F0A3711BEF002A002AE893 /* UserView.m in Sources */,
 				D1F0A3611BEE0EEE002AE893 /* DetailCell.m in Sources */,
-				D1F0A3671BEE51D2002AE893 /* CommentLabel.m in Sources */,
 				D1F0A3641BEE2AC7002AE893 /* IVLoader.m in Sources */,
 				D1F0A33B1BEDBCC9002AE893 /* AppDelegate.m in Sources */,
 				D1F0A3381BEDBCC9002AE893 /* main.m in Sources */,
@@ -385,6 +393,7 @@
 			baseConfigurationReference = 9C4935AE5D00E1630C87DC41 /* Pods-instagram-viewer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "instagram-viewer/InstagramView-Prefix.pch";
 				INFOPLIST_FILE = "instagram-viewer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "superdami.instagram-viewer";
@@ -397,6 +406,7 @@
 			baseConfigurationReference = 3DA353480F7AA8684C9C6D0E /* Pods-instagram-viewer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "instagram-viewer/InstagramView-Prefix.pch";
 				INFOPLIST_FILE = "instagram-viewer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "superdami.instagram-viewer";

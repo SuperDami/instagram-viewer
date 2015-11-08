@@ -7,5 +7,6 @@ target 'instagram-viewer' do
 pod 'AFNetworking'
 pod 'InstagramKit'
 pod 'InstagramKit/UICKeyChainStore'
+pod 'Masonry'
 end
 
