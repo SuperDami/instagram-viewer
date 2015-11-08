@@ -99,7 +99,7 @@
 
 - (void)loadMedia {
     BOOL isSessionValid = [self.instagramEngine isSessionValid];
-    [self setTitle: (isSessionValid) ? @"My Feed" : @"Popular Media"];
+    [self setTitle: (isSessionValid) ? @"My Feed" : @"Popular"];
     [self.loader reloadMediaData];
     [self.collectionView reloadData];
 }

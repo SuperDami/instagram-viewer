@@ -98,7 +98,6 @@
     };
     
     InstagramFailureBlock failureBlock = ^(NSError *error, NSInteger statusCode) {
-        weakMe.hasMore = NO;
         weakMe.isLoading = NO;
     };
     
