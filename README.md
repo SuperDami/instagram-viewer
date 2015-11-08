@@ -1,7 +1,7 @@
 # instagram-viewer
 A simple photo browser for instagram
 
-![Example](https://www.dropbox.com/s/dt0sybqqlsbjjnn/instagram-viewer-demo.gif?dl=1)
+[gif demo](https://www.dropbox.com/s/dt0sybqqlsbjjnn/instagram-viewer-demo.gif?dl=1)
 
 <br/>     				
 
@@ -29,5 +29,5 @@ When scroll position is on top, user could pull down the list to reload latest p
 
 In user account view. It provide user's posts and likes.
 
-If the time for developing is long enough. I think there should have "like this photo" function.
+If the time for developing is long enough. I think there should have "like" function.
 
