@@ -86,7 +86,11 @@
 
 + (CGFloat)imgHeightWith:(CGFloat)width media:(InstagramMedia *)media {
     CGSize imgSize = media.standardResolutionImageFrameSize;
-    return (CGFloat)ceil(width / imgSize.width * imgSize.height);
+    if (imgSize.width && imgSize.height) {
+        return (CGFloat)ceil(width / imgSize.width * imgSize.height);
+    } else {
+        return width;
+    }
 }
 
 + (CGFloat)heightWithArrtString:(NSAttributedString *)str width:(CGFloat)width {
