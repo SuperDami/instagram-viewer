@@ -9,7 +9,6 @@
 #import "DetailViewController.h"
 #import "DetailCell.h"
 #import "InstagramKit.h"
-#import "InstagramEngine.h"
 #import "IVLoader.h"
 
 #define kFetchItemsCount 10

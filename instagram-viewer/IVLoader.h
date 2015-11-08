@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 static NSString *IVLoaderMediaDataUpdated = @"KIVLoaderNotificationMediaDataUpdated";
+static NSString *IVLoaderUserDataUpdated = @"KIVLoaderUserDataUpdated";
 
 @interface IVLoader : NSObject
 @property(nonatomic, assign)BOOL isLoading;
@@ -17,6 +18,7 @@ static NSString *IVLoaderMediaDataUpdated = @"KIVLoaderNotificationMediaDataUpda
 
 + (instancetype)shareInstance;
 - (void)reloadMediaData;
-- (void)loadMoreFeedCount:(NSUInteger)count;
+- (void)reloadUserLikes;
+- (void)reloadUserPosts;
 - (void)loadMoreIfPossibleCount:(NSUInteger)count;
 @end
